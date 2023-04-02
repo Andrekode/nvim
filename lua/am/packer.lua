@@ -47,6 +47,7 @@ return require("packer").startup(function(use)
 	})
 	use("simrat39/symbols-outline.nvim")
 	use("simrat39/rust-tools.nvim")
+    use('rust-lang/rust.vim')
 	use("onsails/lspkind-nvim")
 	-- formatter
 	use("sbdchd/neoformat")
@@ -69,21 +70,15 @@ return require("packer").startup(function(use)
 	-- commenter
 	use("numToStr/Comment.nvim")
 
-	-- autopair
-	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	})
+
+	use("echasnovski/mini.nvim")
 
 	-- colorize
 	use("norcalli/nvim-colorizer.lua")
-	-- indent blankline
-	-- use("lukas-reineke/indent-blankline.nvim")
 
 	-- git stuff
-	use("TimUntersberger/neogit")
+	-- use("TimUntersberger/neogit")
+    use("tpope/vim-fugitive")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("lewis6991/gitsigns.nvim")
 

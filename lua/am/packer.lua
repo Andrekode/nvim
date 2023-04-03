@@ -1,3 +1,16 @@
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
+end
+
+local packer_bootstrap = ensure_packer()
+
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
@@ -47,7 +60,7 @@ return require("packer").startup(function(use)
 	})
 	use("simrat39/symbols-outline.nvim")
 	use("simrat39/rust-tools.nvim")
-    use('rust-lang/rust.vim')
+	use("rust-lang/rust.vim")
 	use("onsails/lspkind-nvim")
 	-- formatter
 	use("sbdchd/neoformat")
@@ -70,7 +83,6 @@ return require("packer").startup(function(use)
 	-- commenter
 	use("numToStr/Comment.nvim")
 
-
 	use("echasnovski/mini.nvim")
 
 	-- colorize
@@ -78,7 +90,7 @@ return require("packer").startup(function(use)
 
 	-- git stuff
 	-- use("TimUntersberger/neogit")
-    use("tpope/vim-fugitive")
+	use("tpope/vim-fugitive")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("lewis6991/gitsigns.nvim")
 
@@ -93,4 +105,8 @@ return require("packer").startup(function(use)
 
 	-- status line
 	use("nvim-lualine/lualine.nvim")
+
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)

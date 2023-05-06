@@ -20,9 +20,9 @@ lsp.set_preferences({
 })
 -- Fix Undefined global 'vim'
 lsp.configure("lua-language-server", {
-     runtime = {
-        version = 'LuaJIT',
-      },
+	runtime = {
+		version = "LuaJIT",
+	},
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -40,7 +40,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-y>"] = cmp.mapping.confirm({ select = true }),
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "gd", function()
@@ -52,7 +52,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>vws", function()
 		vim.lsp.buf.workspace_symbol()
 	end, opts)
-	vim.keymap.set("n", "<leader>vd", function()
+	vim.keymap.set("n", "<leader>cd", function()
 		vim.diagnostic.open_float()
 	end, opts)
 	vim.keymap.set("n", "[e", function()
@@ -64,12 +64,10 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>ca", function()
 		vim.lsp.buf.code_action()
 	end, opts)
-	vim.keymap.set("n", "<leader>vrr", function()
-		vim.lsp.buf.references()
-	end, opts)
-	vim.keymap.set("n", "<leader>rn", function()
-		vim.lsp.buf.rename()
-	end, opts)
+	vim.keymap.set("n", "<leader>gr", require("telescope.builtin").lsp_references, opts)
+	vim.keymap.set("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, opts)
+	vim.keymap.set("n", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, opts)
+	vim.keymap.set("n", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, opts)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)

@@ -15,9 +15,13 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- telescope stuff
-	use("nvim-lua/plenary.nvim")
 	use("nvim-lua/popup.nvim")
-	use("nvim-telescope/telescope.nvim")
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		-- or                            , branch = '0.1.x',
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 	use("kyazdani42/nvim-tree.lua")
 	use("kyazdani42/nvim-web-devicons")
 
@@ -44,20 +48,6 @@ return require("packer").startup(function(use)
 			{ "rafamadriz/friendly-snippets" }, -- Optional
 		},
 	})
-	-- null ls
-	--	use("jose-elias-alvarez/null-ls.nvim")
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		config = function()
-			require("lspsaga").setup({
-				lightbulb = {
-					enable = false,
-				},
-			})
-		end,
-		requires = { { "nvim-tree/nvim-web-devicons" } },
-	})
 	use("simrat39/symbols-outline.nvim")
 	use("simrat39/rust-tools.nvim")
 	use("rust-lang/rust.vim")
@@ -66,6 +56,18 @@ return require("packer").startup(function(use)
 	use("sbdchd/neoformat")
 
 	-- lsp utils
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({
+				icons = false,
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+	use("mrjones2014/nvim-ts-rainbow")
 
 	-- primestuff harpoon git worktree
 	use("ThePrimeagen/git-worktree.nvim")
@@ -75,7 +77,6 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter", {
 		run = ":TSUpdate",
 	})
-	use("p00f/nvim-ts-rainbow")
 
 	use("romgrk/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
@@ -102,6 +103,7 @@ return require("packer").startup(function(use)
 	-- color schemes
 	use("gruvbox-community/gruvbox")
 	use("folke/tokyonight.nvim")
+	use({ "rose-pine/neovim", as = "rose-pine" })
 
 	-- status line
 	use("nvim-lualine/lualine.nvim")

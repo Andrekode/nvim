@@ -18,7 +18,7 @@ return require("packer").startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.4",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
@@ -101,7 +101,8 @@ return require("packer").startup(function(use)
 	-- friendly snippets
 	use("rafamadriz/friendly-snippets")
 	-- color schemes
-	use("gruvbox-community/gruvbox")
+    use { "ellisonleao/gruvbox.nvim" }
+
 	use("folke/tokyonight.nvim")
 	use({ "rose-pine/neovim", as = "rose-pine" })
 

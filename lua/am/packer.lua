@@ -49,7 +49,7 @@ return require("packer").startup(function(use)
 		},
 	})
 	use("simrat39/symbols-outline.nvim")
-	use("simrat39/rust-tools.nvim")
+	-- use("simrat39/rust-tools.nvim")
 	use("rust-lang/rust.vim")
 	use("onsails/lspkind-nvim")
 	-- formatter
@@ -71,7 +71,12 @@ return require("packer").startup(function(use)
 
 	-- primestuff harpoon git worktree
 	use("ThePrimeagen/git-worktree.nvim")
-	use("ThePrimeagen/harpoon")
+
+    use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+    }
 
 	-- treeshitter
 	use("nvim-treesitter/nvim-treesitter", {

@@ -82,6 +82,11 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter", {
 		run = ":TSUpdate",
 	})
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 
 	use("romgrk/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
@@ -107,6 +112,7 @@ return require("packer").startup(function(use)
 	use("rafamadriz/friendly-snippets")
 	-- color schemes
     use { "ellisonleao/gruvbox.nvim" }
+    use {"craftzdog/solarized-osaka.nvim"}
 
 	use("folke/tokyonight.nvim")
 	use({ "rose-pine/neovim", as = "rose-pine" })

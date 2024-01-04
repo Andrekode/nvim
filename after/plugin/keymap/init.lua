@@ -7,7 +7,7 @@ local nmap = Remap.nmap
 
 nnoremap("<leader>pv", ":NvimTreeFindFileToggle<CR>")
 nnoremap("<leader>u", ":UndotreeShow<CR>")
-nnoremap("<leader>fo", ":Neoformat prettier<CR>")
+-- nnoremap("<leader>fo", ":Neoformat prettier<CR>")
 nnoremap("<leader>fmt", ":RustFmt <CR>")
 
 vnoremap("K", ":m '<-2<CR>gv=gv")

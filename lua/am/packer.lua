@@ -51,6 +51,14 @@ return require("packer").startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 	-- use("simrat39/rust-tools.nvim")
 	use("rust-lang/rust.vim")
+
+    use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+}
 	use("onsails/lspkind-nvim")
 	-- formatter
 	use("sbdchd/neoformat")

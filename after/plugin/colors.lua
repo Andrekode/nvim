@@ -1,12 +1,12 @@
-require('solarized-osaka').setup({
-    disable_background = true,
-    styles = {
-        -- Background styles. Can be "dark", "transparent" or "normal"
-        sidebars = "transparent", -- style for sidebars, see below
-        floats = "transparent", -- style for floating windows
-      },
-    day_brightnes = 1,
-})
+-- require('solarized-osaka').setup({
+--     disable_background = true,
+--     styles = {
+--         -- Background styles. Can be "dark", "transparent" or "normal"
+--         sidebars = "transparent", -- style for sidebars, see below
+--         floats = "transparent", -- style for floating windows
+--       },
+--     day_brightnes = 1,
+-- })
 
 require('rose-pine').setup({
     disable_background = true,
@@ -26,4 +26,4 @@ function ColorMyPencils(color)
 
 end
 
-ColorMyPencils('solarized-osaka')
+ColorMyPencils()

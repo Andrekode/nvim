@@ -22,8 +22,8 @@ return require("packer").startup(function(use)
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
-	use("kyazdani42/nvim-tree.lua")
-	use("kyazdani42/nvim-web-devicons")
+	-- use("kyazdani42/nvim-tree.lua")
+	-- use("kyazdani42/nvim-web-devicons")
 
 	-- lsp
 	use({
@@ -124,6 +124,7 @@ return require("packer").startup(function(use)
 
 	use("folke/tokyonight.nvim")
 	use({ "rose-pine/neovim", as = "rose-pine" })
+    use { "ellisonleao/gruvbox.nvim" }
 
 	-- status line
 	use("nvim-lualine/lualine.nvim")

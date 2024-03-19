@@ -1,6 +1,7 @@
 return {
-    {"tpope/vim-fugitive",
-    config  = function()
+    {
+        "tpope/vim-fugitive",
+        config = function()
             local Remap = require("am.keymap")
             local nnoremap = Remap.nnoremap
 
@@ -26,6 +27,6 @@ return {
                     vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts)
                 end,
             })
-    end
-}
+        end
+    }
 }

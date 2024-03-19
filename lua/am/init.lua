@@ -1,4 +1,5 @@
 require("am.options")
+require("am.keymaps")
 require("am.lazy_init")
 
 local autocmd = vim.api.nvim_create_autocmd

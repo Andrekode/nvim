@@ -1,5 +1,4 @@
 return {
-
     {
         "echasnovski/mini.nvim",
         config = function()
@@ -8,5 +7,5 @@ return {
             require('mini.pairs').setup()
             require('mini.comment').setup()
         end
-}
+    }
 }

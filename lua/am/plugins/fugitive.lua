@@ -8,7 +8,6 @@ return {
             nnoremap("<leader>gs", vim.cmd.Git)
 
             local am_fugitive = vim.api.nvim_create_augroup("am_fugitive", {})
-
             local autocmd = vim.api.nvim_create_autocmd
             autocmd("BufWinEnter", {
                 group = am_fugitive,

@@ -20,7 +20,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-opt.mouse = nil
+opt.mouse = 'nv'
 
 opt.showmode = false
 opt.showcmd = true

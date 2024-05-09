@@ -6,8 +6,12 @@ local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
 nnoremap("<leader>pv", ":Explore<CR>")
--- nnoremap("<leader>fo", ":Neoformat prettier<CR>")
 nnoremap("<leader>fmt", ":RustFmt <CR>")
+nnoremap("<leader>flt", function() require("telescope").extensions.flutter.commands() end)
+
+
+nnoremap("-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 
 vnoremap("K", ":m '<-2<CR>gv=gv")
 vnoremap("J", ":m '>+1<CR>gv=gv")

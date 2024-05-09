@@ -1,6 +1,7 @@
 return {
     "akinsho/flutter-tools.nvim",
     dependencies = {
+        "nvim-telescope/telescope.nvim",
         "nvim-lua/plenary.nvim",
         "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
@@ -29,6 +30,7 @@ return {
                 end,
             }
         })
+
 
         require('flutter-tools').setup_project({
             {

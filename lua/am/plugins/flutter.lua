@@ -21,8 +21,8 @@ return {
                             type = "dart",
                             request = "launch",
                             name = "Launch flutter",
-                            dartSdkPath = 'home/flutter/bin/cache/dart-sdk/',
-                            flutterSdkPath = "home/flutter",
+                            dartSdkPath = vim.fn.expand('$HOME/development/flutter/bin/cache/dart-sdk/'),
+                            flutterSdkPath = vim.fn.expand('$HOME/development/flutter/'),
                             program = "${workspaceFolder}/lib/main-alpha.dart",
                             cwd = "${workspaceFolder}",
                         }
@@ -34,7 +34,7 @@ return {
 
         require('flutter-tools').setup_project({
             {
-                name = 'Development',           -- an arbitrary name that you provide so you can recognise this config
+                name = 'Alpha',                 -- an arbitrary name that you provide so you can recognise this config
                 flavor = 'Alpha',               -- your flavour
                 target = 'lib/main-alpha.dart', -- your target
                 dart_define = {
@@ -42,7 +42,7 @@ return {
                 },
             },
             {
-                name = 'Development rel',       -- an arbitrary name that you provide so you can recognise this config
+                name = 'Alpha release',         -- an arbitrary name that you provide so you can recognise this config
                 flavor = 'Alpha',               -- your flavour
                 target = 'lib/main-alpha.dart', -- your target
                 dart_define = {

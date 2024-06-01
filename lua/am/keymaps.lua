@@ -5,7 +5,6 @@ local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
-nnoremap("<leader>pv", ":Explore<CR>")
 nnoremap("<leader>fmt", ":RustFmt <CR>")
 nnoremap("<leader>flt", function() require("telescope").extensions.flutter.commands() end)
 

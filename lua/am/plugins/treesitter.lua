@@ -6,7 +6,7 @@ return {
         -- },
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "vimdoc", "typescript", "lua", "typescript", "rust", "http", "json", "graphql", "xml" },
+                ensure_installed = { "vimdoc", "typescript", "lua", "typescript", "rust", "http", "json", "graphql", "xml", "markdown", "markdown_inline" },
                 sync_install = false,
 
                 highlight = {

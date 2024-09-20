@@ -9,7 +9,7 @@ nnoremap("<leader>fmt", ":RustFmt <CR>")
 nnoremap("<leader>flt", function() require("telescope").extensions.flutter.commands() end)
 
 
-nnoremap("-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+nnoremap("<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 
 vnoremap("K", ":m '<-2<CR>gv=gv")

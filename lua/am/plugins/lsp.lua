@@ -34,6 +34,7 @@ return {
                     },
                 },
             }
+
             require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
@@ -58,6 +59,14 @@ return {
 
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
             cmp.setup({
+                window = {
+                    completion = cmp.config.window.bordered({
+                        winhighlight = "Normal:Normal,FloatBorder:LspBorderBG,CursorLine:PmenuSel,Search:None",
+                    }),
+                    documentation = cmp.config.window.bordered({
+                        winhighlight = "Normal:Normal,FloatBorder:LspBorderBG,CursorLine:PmenuSel,Search:None",
+                    }),
+                },
                 snippet = {
                     expand = function(args)
                         require("luasnip").lsp_expand(args.body)
@@ -74,6 +83,7 @@ return {
                     { name = "luasnip" },
                     { name = "path" },
                     { name = "buffer" },
+                    { name = "neorg" },
                 })
             })
         end

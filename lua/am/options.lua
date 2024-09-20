@@ -21,6 +21,9 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 opt.mouse = 'nv'
+vim.opt.conceallevel = 1
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
 
 opt.showmode = false
 opt.showcmd = true

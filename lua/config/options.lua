@@ -1,3 +1,6 @@
+-- leader key
+vim.g.mapleader = " "
+
 vim.g.loaded_matchparen = 1
 vim.opt.termguicolors = true
 vim.opt.winbar = '%=%m %f'
@@ -99,3 +102,8 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 opt.fillchars = { eob = "~" }
 
 vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
+
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25

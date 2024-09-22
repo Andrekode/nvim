@@ -281,4 +281,105 @@ function M.setup_dap_keymaps()
     }
 end
 
+function M.setup_typescript_lsp_keymaps()
+    return {
+        {
+            "gD",
+            function()
+                require("vtsls").commands.goto_source_definition(0)
+            end,
+            desc = "Goto Source Definition",
+        },
+        {
+            "gR",
+            function()
+                require("vtsls").commands.file_references(0)
+            end,
+            desc = "File References",
+        },
+        {
+            "<leader>co",
+            function()
+                require("vtsls").commands.organize_imports(0)
+            end,
+            desc = "Organize Imports",
+        },
+        {
+            "<leader>cM",
+            function()
+                require("vtsls").commands.add_missing_imports(0)
+            end,
+            desc = "Add missing imports",
+        },
+        {
+            "<leader>cu",
+            function()
+                require("vtsls").commands.remove_unused_imports(0)
+            end,
+            desc = "Remove unused imports",
+        },
+        {
+            "<leader>cD",
+            function()
+                require("vtsls").commands.fix_all(0)
+            end,
+            desc = "Fix all diagnostics",
+        },
+        {
+            "<leader>cV",
+            function()
+                require("vtsls").commands.select_ts_version(0)
+            end,
+            desc = "Select TS workspace version",
+        },
+    }
+end
+
+function M.setup_cmp_keymaps(cmp)
+    local cmp_select = { behavior = cmp.SelectBehavior.Select }
+    return {
+
+        ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+        ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+        ["<C-y>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.insert, select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+    }
+end
+
+function M.setup_lsp_autocmd_keymaps(event)
+    local opts = { buffer = event.buf }
+    vim.keymap.set("n", "gd", function()
+        require("telescope.builtin").lsp_definitions()
+    end, opts)
+    vim.keymap.set("n", "<leader>fo", function()
+        vim.lsp.buf.format()
+    end, opts)
+    vim.keymap.set("n", "K", function()
+        vim.lsp.buf.hover()
+    end, opts)
+    vim.keymap.set("n", "<leader>vws", function()
+        vim.lsp.buf.workspace_symbol()
+    end, opts)
+    vim.keymap.set("n", "<leader>cd", function()
+        vim.diagnostic.open_float()
+    end, opts)
+    vim.keymap.set("n", "[e", function()
+        vim.diagnostic.goto_next({ severity = "ERROR" })
+    end, opts)
+    vim.keymap.set("n", "]e", function()
+        vim.diagnostic.goto_prev({ severity = "ERROR" })
+    end, opts)
+    vim.keymap.set("n", "<leader>ca", function()
+        vim.lsp.buf.code_action()
+    end, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+
+    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
+    vim.keymap.set("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, opts)
+    vim.keymap.set("n", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, opts)
+    vim.keymap.set("i", "<C-h>", function()
+        vim.lsp.buf.signature_help()
+    end, opts)
+end
+
 return M

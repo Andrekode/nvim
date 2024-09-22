@@ -8,8 +8,8 @@ return {
     config = function()
         require("flutter-tools").setup({
             debugger = {
-                enabled = false,
-                run_via_dap = false,
+                enabled = true,
+                run_via_dap = true,
                 register_configurations = function(_)
                     require("dap").adapters.dart = {
                         type = "executable",
@@ -20,7 +20,7 @@ return {
                         {
                             type = "dart",
                             request = "launch",
-                            name = "Launch flutter",
+                            name = "Alpha debug",
                             dartSdkPath = vim.fn.expand('$HOME/development/flutter/bin/cache/dart-sdk/'),
                             flutterSdkPath = vim.fn.expand('$HOME/development/flutter/'),
                             program = "${workspaceFolder}/lib/main-alpha.dart",

@@ -1,23 +1,27 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        -- dependencies = {
-        --     "nvim-treesitter/nvim-treesitter-context",
-        -- },
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = { "vimdoc", "typescript", "lua", "typescript", "rust", "http", "json", "graphql", "xml", "markdown", "markdown_inline" },
-                sync_install = false,
-
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-                indent = {
-                    enable = false,
-                },
-            })
-        end
+        event = "VeryLazy",
+        build = ":TSUpdate",
+        opts = function(_, opts)
+            local defaults = {
+                auto_install = true,
+                ensure_installed = { "diff", "regex", "markdown_inline", "http" },
+                highlight = { enable = true },
+                indent = { enable = true },
+            }
+            local merged = require("utils.table").deep_tbl_extend(defaults, opts)
+            return merged
+        end,
+        config = function(_, opts)
+            local config = require("nvim-treesitter.configs")
+            config.setup(opts)
+        end,
     },
 
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        event = "VeryLazy",
+        dependencies = { "nvim-treesitter/nvim-treesitter", lazy = true },
+    },
 }

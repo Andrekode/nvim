@@ -30,6 +30,7 @@ return {
 			css = { { "prettierd", "prettier" } },
 			scss = { { "prettierd", "prettier" } },
 			sh = { { "shellcheck" } },
+			dart = { { "dart format" } },
 		},
 	},
 }

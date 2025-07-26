@@ -34,10 +34,10 @@ inoremap("<C-c>", "<Esc>")
 
 nnoremap("Q", "<nop>")
 
-nnoremap("<C-k>", "<cmd>cnext<CR>zz")
-nnoremap("<C-j>", "<cmd>cprev<CR>zz")
-nnoremap("<leader>k", "<cmd>lnext<CR>zz")
-nnoremap("<leader>j", "<cmd>lprev<CR>zz")
+nnoremap("<C-j>", "<cmd>cnext<CR>zz")
+nnoremap("<C-k>", "<cmd>cprev<CR>zz")
+nnoremap("<leader>j", "<cmd>lnext<CR>zz")
+nnoremap("<leader>k", "<cmd>lprev<CR>zz")
 
 function M.setup_telescope_keymaps()
 	local builtin = require("telescope.builtin")
@@ -54,6 +54,7 @@ function M.setup_telescope_keymaps()
 	nnoremap("<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 	nnoremap("<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 	nnoremap("<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+	nnoremap("<leader>gi", builtin.lsp_implementations, { desc = "go to impl" })
 	nnoremap("<leader>flt", function()
 		require("telescope").extensions.flutter.commands()
 	end)
@@ -62,7 +63,7 @@ end
 function M.setup_neogit_keymaps()
 	local neogit = require("neogit")
 	vim.keymap.set("n", "<leader>gs", function()
-		neogit.open({ kind = "split" })
+		neogit.open({ kind = "vsplit" })
 	end, { silent = true, noremap = true, desc = "Neogit" })
 	vim.keymap.set("n", "<leader>gp", ":Neogit pull<CR>", { silent = true, noremap = true, desc = "[g]it [p]ull" })
 	vim.keymap.set("n", "<leader>gP", ":Neogit push<CR>", { silent = true, noremap = true, desc = "[g]it [P]ush" })
@@ -360,10 +361,10 @@ function M.setup_lsp_autocmd_keymaps(event)
 		vim.diagnostic.open_float()
 	end, opts)
 	vim.keymap.set("n", "[e", function()
-		vim.diagnostic.goto_next({ severity = "ERROR" })
+		vim.diagnostic.goto_next()
 	end, opts)
 	vim.keymap.set("n", "]e", function()
-		vim.diagnostic.goto_prev({ severity = "ERROR" })
+		vim.diagnostic.goto_prev()
 	end, opts)
 	vim.keymap.set("n", "<leader>ca", function()
 		vim.lsp.buf.code_action()
@@ -382,7 +383,7 @@ function M.setup_trouble_keymaps()
 	return {
 		{
 			"<leader>xx",
-			"<cmd>Trouble diagnostics toggle<cr>",
+			"<cmd>Trouble diagnostics toggle <cr>",
 			desc = "Diagnostics (Trouble)",
 		},
 		{
@@ -413,8 +414,23 @@ function M.setup_trouble_keymaps()
 	}
 end
 
-function M.setup_rest_keymaps()
-	nnoremap("<leader>rr", "<cmd>Rest run<CR>")
+function M.setup_kulala_keymaps()
+	return {
+		{
+			"<leader>rr",
+			function()
+				require("kulala").run()
+			end,
+			desc = "Send request",
+		},
+		{
+			"<leader>rR",
+			function()
+				require("kulala").replay()
+			end,
+			desc = "reply request",
+		},
+	}
 end
 
 return M

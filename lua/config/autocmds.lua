@@ -13,9 +13,15 @@ autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = require("config.keymaps").setup_lsp_autocmd_keymaps
+})
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "json" },
 	callback = function()
 		vim.api.nvim_set_option_value("formatprg", "jq", { scope = "local" })
 	end,
 })
+
+

@@ -332,15 +332,14 @@ function M.setup_typescript_lsp_keymaps()
 	}
 end
 
-function M.setup_cmp_keymaps(cmp)
-	local cmp_select = { behavior = cmp.SelectBehavior.Select }
-	return {
+function M.setup_blink_keymaps()
 
-		["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-		["<C-y>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.insert, select = true }),
-		["<C-Space>"] = cmp.mapping.complete(),
-	}
+            return {
+			["<C-y>"] = { "select_and_accept", "fallback" },
+			["<c-e>"] = { "hide", "show", "fallback" },
+			["<c-n>"] = { "select_next", "show", "fallback" },
+			["<c-p>"] = { "select_prev", "show", "fallback" },
+		}
 end
 
 function M.setup_lsp_autocmd_keymaps(event)

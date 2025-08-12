@@ -9,5 +9,6 @@ end
 vim.lsp.enable(lsp_configs)
 
 vim.diagnostic.config({
-    virtual_lines = true,
+    -- virtual_lines = true,
+    virtual_text = true
 })

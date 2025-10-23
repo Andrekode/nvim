@@ -97,7 +97,18 @@ return {
             },
         },
         sources = {
-            default = { "lsp", "path", "buffer", "snippets" },
+            default = { "lazydev", "lsp", "path", "buffer", "snippets" },
+            per_filetype = {
+                sql = { "dadbod" },
+            },
+            providers = {
+                dadbod = { module = "vim_dadbod_completion.blink" },
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    score_offset = 100,
+                },
+            }
         },
     },
 

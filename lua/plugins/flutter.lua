@@ -45,13 +45,13 @@ return {
 				name = "Alpha Iphone",
 				flavor = "Alpha",
 				target = "lib/main-alpha.dart",
-				device = "719770D5-1CF9-41AC-ACDC-A01B6D479E10",
+				device = "A3CF57C5-0D00-4B96-A59E-47447900AEA1",
 				dart_define = {
 					IS_DEV = true,
 				},
 			},
 			{
-				name = "Alpha current",
+				name = "Alpha Auto",
 				flavor = "Alpha",
 				target = "lib/main-alpha.dart",
 				dart_define = {

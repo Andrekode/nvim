@@ -1,5 +1,4 @@
 local PACKAGES = {
-	-- LSP
 	"dockerfile-language-server",
 	"html-lsp",
 	"json-lsp",
@@ -7,16 +6,16 @@ local PACKAGES = {
 	"pyright",
 	"typescript-language-server",
 	"yaml-language-server",
-	-- Format
 	"black",
 	"flake8",
 	"prettierd",
 	"stylua",
-	-- Lint
 	"eslint-lsp",
 	"pylint",
 	"rust-analyzer@2026-02-02",
 	"kulala-fmt",
+	"dart-debug-adapter",
+	"tombi",
 }
 
 local function install(pack, version)

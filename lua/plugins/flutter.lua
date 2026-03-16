@@ -10,14 +10,14 @@ return {
 				enabled = false,
 				run_via_dap = true,
 				register_configurations = function(_)
-					require("dap").adapters.dart = {
+					require("dap").adapters.flutter = {
 						type = "executable",
-						command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
-						args = { "flutter" },
+						command = "flutter",
+						args = { "debug_adapter" },
 					}
 					require("dap").configurations.dart = {
 						{
-							type = "dart",
+							type = "flutter",
 							request = "launch",
 							name = "Alpha debug",
 							dartSdkPath = vim.fn.expand("$HOME/development/flutter/bin/cache/dart-sdk/"),
@@ -29,7 +29,6 @@ return {
 				end,
 			},
 		})
-
 		require("flutter-tools").setup_project({
 			{
 				name = "Alpha Android",

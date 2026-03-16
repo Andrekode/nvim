@@ -6,5 +6,8 @@ return {
 		ui = {
 			max_response_size = 42768,
 		},
+		contenttypes = {
+			["sosi%+json"] = "application/json",
+		},
 	},
 }

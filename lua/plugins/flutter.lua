@@ -1,8 +1,17 @@
+-- Monorepo subdirectory holding the Flutter app, e.g. NVIM_FLUTTER_PROJECT_DIR=my_app.
+-- Unset means the app lives at the repo root.
+local project_dir = vim.env.NVIM_FLUTTER_PROJECT_DIR
+
 return {
 	"nvim-flutter/flutter-tools.nvim",
+	build = "git apply --3way ~/.config/nvim/patches/flutter-tools.nvim.patch", -- PR #512: snacks picker (remove once merged)
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"stevearc/dressing.nvim", -- optional for vim.ui.select
+	},
+	ft = "dart",
+	keys = {
+		{ "<leader>flt", function() require("flutter-tools.menu").commands_snack() end, desc = "Flutter commands" },
 	},
 	config = function()
 		require("flutter-tools").setup({
@@ -43,10 +52,11 @@ return {
 				name = "Alpha Iphone",
 				flavor = "Alpha",
 				target = "lib/main-alpha.dart",
-				device = "A3CF57C5-0D00-4B96-A59E-47447900AEA1",
+				device = "769352FC-9B05-412E-9013-2AD4D4AC290E",
 				dart_define = {
 					IS_DEV = true,
 				},
+				cwd = project_dir,
 			},
 			{
 				name = "Alpha Auto",
@@ -55,6 +65,7 @@ return {
 				dart_define = {
 					IS_DEV = true,
 				},
+				cwd = project_dir,
 			},
 			{
 				name = "Alpha release",

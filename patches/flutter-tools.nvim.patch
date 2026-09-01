@@ -1,0 +1,65 @@
+From 68134f49e50624bffa2518730bffb5052c55f030 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nguy=E1=BB=85n=20Xu=C3=A2n=20Ho=C3=A0ng?=
+ <hoangnx@HoangNXs-Mac-mini.local>
+Date: Thu, 8 Jan 2026 15:56:44 +0700
+Subject: [PATCH] feat: add menu for snacks picker
+
+---
+ lua/flutter-tools/menu.lua | 29 ++++++++++++++++++++++++++---
+ 1 file changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/lua/flutter-tools/menu.lua b/lua/flutter-tools/menu.lua
+index 943c7df..f30d6a0 100644
+--- a/lua/flutter-tools/menu.lua
++++ b/lua/flutter-tools/menu.lua
+@@ -1,5 +1,6 @@
+ local lazy = require("flutter-tools.lazy")
+ local pickers = lazy.require("telescope.pickers") ---@module "telescope.pickers"
++local snack_picker = lazy.require("snacks.picker") ---@module "snacks.picker"
+ local finders = lazy.require("telescope.finders") ---@module "telescope.finders"
+ local sorters = lazy.require("telescope.sorters") ---@module "telescope.sorters"
+ local actions = lazy.require("telescope.actions") ---@module "telescope.actions"
+@@ -97,9 +98,8 @@ function M.get_config(items, user_opts, opts)
+   }))
+ end
+ 
+-function M.commands(opts)
++local function generate_commands_list()
+   local cmds = {}
+-
+   if commands.is_running() then
+     cmds = {
+       {
+@@ -264,8 +264,31 @@ function M.commands(opts)
+       },
+     })
+   end
++  return cmds
++end
+ 
+-  pickers.new(M.get_config(cmds, opts, { title = "Flutter tools commands" })):find()
++function M.commands(opts)
++  pickers
++    .new(M.get_config(generate_commands_list(), opts, { title = "Flutter tools commands" }))
++    :find()
++end
++
++function M.commands_snack()
++  local cmds = generate_commands_list()
++  for index, item in ipairs(cmds) do
++    item.text = index .. ". " .. item.label
++  end
++  snack_picker.pick({
++    title = "Flutter Tools",
++    format = "text",
++    autoselect = true,
++    finder = function() return cmds end,
++    confirm = function(picker, item)
++      picker:close()
++      if item and item.command then item.command() end
++    end,
++    layout = "select",
++  })
+ end
+ 
+ local function execute_fvm_use(bufnr)

@@ -4,7 +4,7 @@ return {
 		event = "VeryLazy",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "diff", "regex", "markdown_inline", "lua", "vim", "vimdoc" },
+			ensure_installed = { "diff", "regex", "markdown_inline", "lua", "vim", "vimdoc", "kotlin" },
 			sync_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
